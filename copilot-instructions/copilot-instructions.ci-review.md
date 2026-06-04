@@ -40,10 +40,9 @@ Nur Muss-Regeln, keine Erlaeuterungen.
 
 ## Qualitaetsregeln fuer Vorschlaege
 
-- Siehe `.github/skills/typescript-module-conventions/SKILL.md` für TypeScript Clean-Code und SRP.
-- Siehe `.github/skills/react-rules/SKILL.md` für React-Regeln (Pure Components/Hooks, Rules of React).
-- Siehe `.github/skills/angular-styleguide/SKILL.md` für Angular-Regeln (Naming, Struktur, Templates, inject()).
-- Siehe `.github/skills/github-actions-ci-workflow/SKILL.md` für CI/CD- und Workflow-Regeln.
+- TypeScript Clean-Code und SRP einhalten.
+- React Regeln einhalten (Rules of React: Pure Components/Hooks, React rendert Components/Hooks, Rules of Hooks).
+- Angular Regeln einhalten (Angular Style Guide: konsistente Naming/Struktur, Templates simpel, inject() bevorzugen).
 - Dokumentationskommentare werden direkt ueber ihrer Funktion platziert, ausser der Kommentar gehoert wirklich an eine andere Stelle.
 - Keine Leerzeile zwischen Dokumentationskommentar und Funktionssignatur.
 - Je mehr eine Funktion macht, desto detaillierter sollte der Dokumentationskommentar sein. Bei einfachen Funktionen reicht eine kurze Beschreibung.
