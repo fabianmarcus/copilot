@@ -1,8 +1,8 @@
 # Copilot Instructions fuer dieses Repository
 
 Version: 1.0.0
-Last updated: 2026-04-05
-Owner: techrockers
+Last updated: 2026-06-03
+Owner: TechRock <dev@techrock.de>
 
 Diese Datei ist die kurze, verbindliche Team-Version.
 Ausfuehrliche Erlaeuterungen und Beispiele stehen in .github/copilot-instructions.detailed.md.
@@ -20,8 +20,7 @@ Fuer CI- und Review-Agenten steht die strikte Minimalvariante in .github/copilot
 ## Terminal- und Tool-Nutzung
 
 - Terminal-Befehle nur auf explizite Nachfrage ausfuehren.
-- Ausnahme: npm run lint und npm run build duerfen nach Code-Aenderungen ohne Rueckfrage ausgefuehrt werden.
-- Datei-loeschende oder stark modifizierende Shell-Befehle nur mit expliziter Freigabe ausfuehren.
+- Ausnahme: npm run lint, npm run build und npm run test duerfen nach Code-Aenderungen ohne Rueckfrage ausgefuehrt werden.
 
 ## Git-Regeln
 
@@ -29,7 +28,9 @@ Fuer CI- und Review-Agenten steht die strikte Minimalvariante in .github/copilot
 - Kein Amend, Rebase oder Reset ohne explizite User-Anweisung.
 - Git Branches in Englisch benennen.
 - Git Commit Messages in Englisch verfassen.
-- Commit Messages muessen dem Standard von "Conventional Commits" entsprechen (https://www.conventionalcommits.org/).
+- Commit Messages muessen dem Standard von "Conventional Commits" entsprechen (<https://www.conventionalcommits.org/>).
+- Vor einem Push muss geprueft werden, ob die zu pushenden Aenderungen ein Update in README-Dateien oder anderen Dokumentationsdateien erfordern.
+- Falls ein Doku-Update noetig ist, darf nicht gepusht werden, bis die Dokumentation aktualisiert wurde.
 - Wenn ein Commit oder Push auf main angefragt ist: explizit warnen und erst nach Bestaetigung durchfuehren.
 
 ## Code-Struktur fuer TypeScript
@@ -68,16 +69,7 @@ Fuer CI- und Review-Agenten steht die strikte Minimalvariante in .github/copilot
 ## Qualitaet und Stil
 
 - Clean-Code-Patterns verwenden und Anti-Patterns in TypeScript, Dateistruktur und Framework vermeiden.
-- React Anti-Patterns vermeiden.
-- React Regeln einhalten (Rules of React):
-  - Components & Hooks muessen pure sein (idempotent, keine Side Effects im Render, Props/State nicht mutieren).
-  - React rendert Components/Hooks (Components nicht als normale Funktion aufrufen, Hooks nicht herumreichen).
-  - Hooks nur top-level und nur aus React-Funktionen aufrufen (Function Components oder Custom Hooks).
-- Angular Anti-Patterns vermeiden.
-- Angular Regeln einhalten (Angular Style Guide):
-  - Naming & Struktur konsistent halten (kebab-case Dateinamen, themen-/feature-basiert statt nach Artefakt-Typ).
-  - Component/Directive Code auf UI fokussieren; komplexe Logik aus Templates nach TypeScript ziehen.
-  - Dependency Injection bevorzugt via `inject()` statt Constructor-Parameter.
+- Framework-spezifische Regeln fuer React und Angular werden ueber separate Skills geladen.
 - Valides semantisches HTML verwenden.
 - Clean Code schreiben, der fuer Menschen schnell erfassbar ist.
 - Code- und Typ-Zeilen ab einer Komplexitaet von 4 bekommen einen einzeiligen, praegnanten Erklaerkommentar.

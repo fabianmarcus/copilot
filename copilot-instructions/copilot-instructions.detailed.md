@@ -1,8 +1,8 @@
 # Copilot Instructions (Detailed)
 
 Version: 1.0.0
-Last updated: 2026-04-05
-Owner: techrockers
+Last updated: 2026-06-03
+Owner: TechRock <dev@techrock.de>
 
 Diese Datei ergaenzt die kurze Team-Version in .github/copilot-instructions.md.
 Sie beschreibt die Regeln ausfuehrlicher, inklusive Ziel, Grenzen und praktischer Auslegung.
@@ -33,7 +33,7 @@ Terminal-Befehle nur auf explizite Nachfrage.
 
 ### Erlaubte Ausnahme ohne Rueckfrage
 
-Nach Code-Aenderungen duerfen npm run lint und npm run build ausgefuehrt werden.
+Nach Code-Aenderungen duerfen npm run lint, npm run build und npm run test ausgefuehrt werden.
 
 ### Sicherheitsregel
 
@@ -50,8 +50,14 @@ Nur auf explizite Nachfrage des Users.
 
 - Git Branches in Englisch benennen.
 - Git Commit Messages in Englisch verfassen.
-- Commit Messages muessen dem Standard von "Conventional Commits" entsprechen (https://www.conventionalcommits.org/).
+- Commit Messages muessen dem Standard von "Conventional Commits" entsprechen (<https://www.conventionalcommits.org/>).
 - Wenn ein Commit oder Push auf main angefragt ist: explizit warnen und erst nach Bestaetigung durchfuehren.
+
+### Push-Vorbedingungen
+
+- Vor einem Push den Doku-Impact der zu pushenden Aenderungen pruefen.
+- Fuer den konkreten Pruefablauf kann bei Bedarf der Skill `push-documentation-check` verwendet werden.
+- Wenn ein Dokumentations-Update fachlich notwendig ist, nicht pushen, bevor die Dokumentation aktualisiert wurde.
 
 ### Historien-Eingriffe
 
@@ -127,7 +133,7 @@ Keine grossflaechige Umstrukturierung ohne fachlichen Anlass.
 - Clean-Code-Patterns anwenden.
 - Valides semantisches HTML verwenden.
 - Anti-Patterns in TypeScript und Dateistruktur vermeiden.
-- Framework-Anti-Patterns vermeiden (z.B. React, Angular).
+- Framework-spezifische Regeln fuer React und Angular werden ueber separate Skills geladen.
 - Clean Code schreiben, der fuer Menschen schnell erfassbar ist.
 - Code- und Typ-Zeilen ab einer Komplexitaet von 4 bekommen einen einzeiligen, praegnanten Erklaerkommentar.
 - Aehnliche, zusammenhaengende Setup-Zeilen (z.B. mehrere `el.* = ...` / `el.setAttribute(...)`) werden der Zeilenlaenge nach sortiert (kurz → lang), sofern die Reihenfolge keine Rolle spielt. Andernfalls semantisch gruppieren und die Abhaengigkeit mit einem kurzen Kommentar begruenden.
@@ -137,76 +143,6 @@ Keine grossflaechige Umstrukturierung ohne fachlichen Anlass.
 - Mehrzeilige Imports werden unter einzeiligen Imports angesiedelt.
 - Bei der Generierung von Code auf Barrierefreiheit achten (ARIA Rules, Screenreader, etc.).
 - Referenz fuer Barrierefreiheit: <http://a11ycalendar.kaseybon.com/> (Ziel: standardmaessig Level "A"; "AA" und "AAA", wenn es den Umfang nicht unverhaeltnismaessig erhoeht.)
-
-### React: Rules of React
-
-Wenn im Repo React/Next.js/TSX geschrieben wird, gelten die "Rules of React" als verbindliche Regeln (nicht nur Guidelines): <https://react.dev/reference/rules>
-Copilot soll Code entsprechend erzeugen und bei Verstoessen aktiv darauf hinweisen. Wenn allerdings bestehende Dateien bereits ein anderes Muster etabliert haben, ist Konsistenz innerhalb der Datei wichtiger als ein Mischstil.
-
-#### 1) Components & Hooks muessen pure sein
-
-- Components sollen bezogen auf Props/State/Context deterministisch sein: gleiche Inputs -> gleiche Ausgabe.
-- Side Effects laufen nicht im Render-Flow. Stattdessen:
-  - in Event-Handlern (z.B. onClick)
-  - oder in Effects (z.B. useEffect / useLayoutEffect), wenn die Reaktion an den Render gebunden ist.
-- Props und State sind Snapshots pro Render: niemals direkt mutieren, sondern neue Objekte/Arrays erzeugen und ueber setState/Reducer aktualisieren.
-- Werte, die an Hooks oder JSX uebergeben wurden, nicht nachtraeglich mutieren (Mutation vor der JSX-Erstellung erledigen oder immutable kopieren).
-
-#### 2) React rendert Components und Hooks (nicht "du")
-
-- Components werden in JSX verwendet und nicht als normale Funktionen aufgerufen (kein `MyComponent()` innerhalb anderer Komponenten).
-- Hooks sind keine normalen Werte: nicht herumreichen, nicht in andere Callbacks "einschleusen" und nicht dynamisch auswaehlen.
-
-#### 3) Rules of Hooks
-
-- Hooks nur auf Top-Level einer React Function aufrufen (Function Component oder Custom Hook):
-  - nicht in Schleifen
-  - nicht in Bedingungen
-  - nicht in verschachtelten Funktionen
-  - keine Hooks nach fruehen Returns/Branches einbauen.
-- Hooks nur aus React-Funktionen aufrufen:
-  - ok: Function Components, Custom Hooks
-  - nicht ok: beliebige Utility-Funktionen, Klassenmethoden, Event-Handler ausserhalb der Component.
-
-#### Empfohlene Tool-Unterstuetzung
-
-- Wenn moeglich Strict Mode aktiv nutzen und sicherstellen, dass das React Hooks ESLint Plugin (react-hooks) im Projekt konfiguriert ist, damit Verstosse frueh gefunden werden.
-
-### Angular: Style Guide
-
-Wenn im Repo Angular geschrieben wird, gelten die Empfehlungen aus dem offiziellen Angular Style Guide als Leitplanken fuer konsistente, wartbare Angular-Anwendungen. Wenn bestehende Dateien bereits ein anderes Muster etabliert haben, ist Konsistenz innerhalb der Datei wichtiger als ein Mischstil.
-
-#### 1) Naming & Dateistruktur
-
-- Dateinamen in kebab-case (mit Bindestrichen), z.B. `user-profile.ts`.
-- Tests enden auf `.spec.ts` und tragen den gleichen Basenamen wie die Produktionsdatei.
-- Dateinamen spiegeln in der Regel den primären TypeScript-Identifier wider; generische Namen wie `helpers.ts`/`utils.ts` vermeiden, wenn es eine klarere Benennung gibt.
-- Component TypeScript, Template und Styles teilen sich den gleichen Basenamen (z.B. `user-profile.ts`, `user-profile.html`, `user-profile.css`).
-
-#### 2) Projektstruktur & Modularitaet
-
-- UI-Code liegt unter `src/`; Einstiegspunkt ist `src/main.ts`.
-- Zusammengehoerige Files (Component + Template + Styles + Spec) liegen im gleichen Ordner.
-- Feature-/Themen-basiert strukturieren (z.B. `src/checkout/...`) statt nach Artefakt-Typ (keine reinen `components/`, `services/`, `directives/`-Ordner, wenn es keine Feature-Gruppierung gibt).
-- Pro Datei bevorzugt ein Konzept (oft: eine Component/Directive/Service), ausser mehrere kleine Klassen gehoeren erkennbar zu einem gemeinsamen Konzept.
-
-#### 3) Dependency Injection
-
-- Bevorzugt `inject()` statt Constructor-Parameter-Injection verwenden (lesbarer, leichter kommentierbar, bessere Typinferenz).
-
-#### 4) Components, Templates & APIs
-
-- Angular-spezifische Properties (Injected Deps, Inputs/Outputs, Queries) oben gruppieren, dann erst Methoden.
-- Components/Directives auf Praesentation fokussieren; Logik, die ohne UI Sinn ergibt, in separate Funktionen/Klassen auslagern.
-- Template-Expressions simpel halten; wenn Template-Logik zu komplex wird, nach TypeScript refactoren (z.B. computed Werte).
-- Class members, die nur vom Template genutzt werden, bevorzugt `protected` statt `public` machen, um die DI-/Query-öffentliche API klein zu halten.
-- Properties, die durch Angular initialisiert werden und nicht überschrieben werden sollen, als `readonly` markieren (wo sinnvoll).
-- CSS-Bindings bevorzugt mit `class.*`/`style.*` statt `ngClass`/`ngStyle` umsetzen (lesbarer und meist günstiger).
-- Event-Handler nach der Aktion benennen (z.B. `saveUserData()` statt `handleClick()`), ausser bei wirklich generischen Keyboard-Handlern.
-- Lifecycle Hooks schlank halten; komplexe Logik in gut benannte Methoden auslagern.
-- Wenn Lifecycle Hooks genutzt werden, die passenden TypeScript Interfaces implementieren (z.B. `OnInit`), um Tippfehler zu vermeiden.
-
-**Quelle**: <https://angular.dev/style-guide>
 
 ### Tooling
 

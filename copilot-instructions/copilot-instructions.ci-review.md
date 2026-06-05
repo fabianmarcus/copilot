@@ -1,8 +1,9 @@
 # Copilot Instructions (CI and Review Mode)
 
 Version: 1.0.0
-Last updated: 2026-04-05
-Owner: techrockers
+Last updated: 2026-06-03
+Owner: TechRock <dev@techrock.de>
+Repo: 
 
 Diese Datei ist die strikte Minimalvariante fuer CI- und Review-Agenten.
 Nur Muss-Regeln, keine Erlaeuterungen.
@@ -22,11 +23,12 @@ Nur Muss-Regeln, keine Erlaeuterungen.
 
 - Keine Code-Aenderung bei reinen Fragen.
 - Keine Tool-Ausfuehrung ohne explizite Aufforderung.
-- Ausnahme nach eigener Code-Aenderung: npm run lint und npm run build sind erlaubt.
+- Ausnahme nach eigener Code-Aenderung: npm run lint, npm run build und npm run test sind erlaubt.
 - Kein Git Commit, kein Push, kein Amend, kein Rebase, kein Reset ohne explizite Aufforderung.
 - Git Branches in Englisch benennen.
 - Git Commit Messages in Englisch verfassen.
-- Commit Messages muessen dem Standard von "Conventional Commits" entsprechen (https://www.conventionalcommits.org/).
+- Commit Messages muessen dem Standard von "Conventional Commits" entsprechen (<https://www.conventionalcommits.org/>).
+- Vor einem Push pruefen, ob die zu pushenden Aenderungen ein Update in README-Dateien oder anderen Dokumentationsdateien erfordern. Falls ja, nicht pushen.
 - Wenn ein Commit oder Push auf main angefragt ist: explizit warnen und erst nach Bestaetigung durchfuehren.
 - Vorschlaege kritisch pruefen und Risiken benennen.
 - Kein bestaetigender Ton ohne inhaltliche Pruefung.
@@ -41,8 +43,7 @@ Nur Muss-Regeln, keine Erlaeuterungen.
 ## Qualitaetsregeln fuer Vorschlaege
 
 - TypeScript Clean-Code und SRP einhalten.
-- React Regeln einhalten (Rules of React: Pure Components/Hooks, React rendert Components/Hooks, Rules of Hooks).
-- Angular Regeln einhalten (Angular Style Guide: konsistente Naming/Struktur, Templates simpel, inject() bevorzugen).
+- Framework-spezifische Regeln fuer React und Angular werden ueber separate Skills geladen.
 - Dokumentationskommentare werden direkt ueber ihrer Funktion platziert, ausser der Kommentar gehoert wirklich an eine andere Stelle.
 - Keine Leerzeile zwischen Dokumentationskommentar und Funktionssignatur.
 - Je mehr eine Funktion macht, desto detaillierter sollte der Dokumentationskommentar sein. Bei einfachen Funktionen reicht eine kurze Beschreibung.
