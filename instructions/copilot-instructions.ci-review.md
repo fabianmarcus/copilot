@@ -3,7 +3,6 @@
 Version: 1.0.0
 Last updated: 2026-06-03
 Owner: TechRock <dev@techrock.de>
-Repo: 
 
 Diese Datei ist die strikte Minimalvariante fuer CI- und Review-Agenten.
 Nur Muss-Regeln, keine Erlaeuterungen.
