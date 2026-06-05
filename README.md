@@ -35,13 +35,14 @@ Ein moeglicher Kopiervorgang im Zielprojekt ist zum Beispiel:
 cp .github/copilot-shared/copilot-instructions.md .github/copilot-instructions.md
 ```
 
-Typischer Update-Ablauf im Zielprojekt:
+Alternativ kann die Struktur unter macOS- oder Linux-Systemen auch per Symlink gespiegelt werden. Eine passende Copilot-Anweisung dafuer waere zum Beispiel:
 
-```bash
-git submodule update --remote --merge
-git add .github/copilot-shared
-git commit -m "Update shared Copilot skills"
+```text
+- Lege Symlink für den Instructions Ordner `.github/copilot-shared/instructions` entsprechend unter `.github/instructions` an.
+- Lege Symlink für den Skills Ordner `.github/copilot-shared/skills` entsprechend unter `.github/skills` an.
 ```
+
+Diese Variante ist vor allem dann nuetzlich, wenn Copilot die Inhalte zusaetzlich unter den Standardpfaden `.github/instructions` und `.github/skills` finden soll. Sie ist jedoch eher fuer Unix-artige Umgebungen geeignet als fuer plattformuebergreifende Repositories.
 
 ## Git-Submodul aktualisieren
 
