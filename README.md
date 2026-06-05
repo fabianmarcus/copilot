@@ -42,3 +42,31 @@ git submodule update --remote --merge
 git add .github/copilot-shared
 git commit -m "Update shared Copilot skills"
 ```
+
+## Git-Submodul aktualisieren
+
+Wenn das Submodul bereits im Zielprojekt eingebunden ist, kann es spaeter auf den neuesten Stand dieses Repositories aktualisiert werden.
+
+Ein typischer Ablauf im Zielprojekt ist:
+
+```bash
+git submodule update --remote --merge
+git add .github/copilot-shared
+git commit -m "Update shared Copilot skills"
+```
+
+Alternativ kann das Submodul auch direkt im eingebundenen Verzeichnis aktualisiert werden:
+
+```bash
+cd .github/copilot-shared
+git pull
+cd ../..
+git add .github/copilot-shared
+git commit -m "Update shared Copilot skills"
+```
+
+Falls auch die mitgelieferte Vorlage fuer `copilot-instructions.md` aktualisiert werden soll, kann sie anschliessend erneut ins Zielprojekt kopiert und dort projektspezifisch angepasst werden:
+
+```bash
+cp .github/copilot-shared/copilot-instructions.md .github/copilot-instructions.md
+```
