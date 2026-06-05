@@ -6,7 +6,7 @@ Sie enthält sowohl selbst erstellte Anleitungen als auch ausgewählte Inhalte a
 
 ## Verwendung als Git-Submodul
 
-Dieses Repository ist als zentrale Quelle für wiederverwendbare Copilot-Inhalte gedacht. Es wird nicht als Submodul in sich selbst eingebunden, sondern von anderen Projekten konsumiert.
+Dieses Repository dient als zentrale Quelle für wiederverwendbare Copilot-Inhalte. Es wird von anderen Projekten typischerweise als Git-Submodul unter `.github/copilot-shared` eingebunden.
 
 Da dieses Repository sowohl `instructions/` als auch `skills/` an der Wurzel enthält, sollte es im Zielprojekt an einen neutralen Pfad eingebunden werden, zum Beispiel unter `.github/copilot-shared`:
 

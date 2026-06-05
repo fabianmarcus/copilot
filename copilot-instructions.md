@@ -15,7 +15,7 @@ Bei Konflikten gilt folgende Reihenfolge:
 ## Anzuwendende Instructions
 
 Für allgemeine Arbeit im Repository:
-- Siehe `.github/copilot-shared/instructions/copilot-instructions.common.md`
+- Siehe `.github/copilot-shared/instructions/copilot-instructions.md`
 
 Für ausführlichere Arbeitsweise, Begründungen und Beispiele:
 - Siehe `.github/copilot-shared/instructions/copilot-instructions.detailed.md`
@@ -25,7 +25,7 @@ Für CI-, Review- und streng minimierte Änderungen:
 
 ## Auswahlregel
 
-- Verwende standardmäßig `copilot-instructions.common.md`.
+- Verwende standardmäßig `copilot-instructions.md`.
 - Ziehe `copilot-instructions.detailed.md` heran, wenn die Aufgabe komplex ist, mehrere Dateien betrifft oder genauere Leitplanken benötigt.
 - Verwende `copilot-instructions.ci-review.md` bei Review-, Prüf-, CI- oder Minimaländerungs-Aufgaben.
 - Wenn mehrere Dateien passen, gilt die spezifischere Datei für den jeweiligen Kontext.

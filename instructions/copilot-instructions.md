@@ -5,8 +5,8 @@ Last updated: 2026-06-03
 Owner: TechRock <dev@techrock.de>
 
 Diese Datei ist die kurze, verbindliche Team-Version.
-Ausfuehrliche Erlaeuterungen und Beispiele stehen in .github/copilot-instructions.detailed.md.
-Fuer CI- und Review-Agenten steht die strikte Minimalvariante in .github/copilot-instructions.ci-review.md.
+Ausfuehrliche Erlaeuterungen und Beispiele stehen in .github/copilot-shared/instructions/copilot-instructions.detailed.md.
+Fuer CI- und Review-Agenten steht die strikte Minimalvariante in .github/copilot-shared/instructions/copilot-instructions.ci-review.md.
 
 ## Geltungsbereich und Prioritaet
 
