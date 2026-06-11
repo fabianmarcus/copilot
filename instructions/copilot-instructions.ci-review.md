@@ -43,8 +43,10 @@ Nur Muss-Regeln, keine Erlaeuterungen.
 
 - TypeScript Clean-Code und SRP einhalten.
 - Framework-spezifische Regeln fuer React und Angular werden ueber separate Skills geladen.
-- Dokumentationskommentare werden direkt ueber ihrer Funktion platziert, ausser der Kommentar gehoert wirklich an eine andere Stelle.
-- Keine Leerzeile zwischen Dokumentationskommentar und Funktionssignatur.
+- Jede Funktion bekommt einen JSDoc-Kommentar, der Zweck und Verwendung der Funktion beschreibt.
+- Jeder TypeScript-Typ bekommt einen JSDoc-Kommentar, der Zweck und Verwendung des Typs beschreibt.
+- Dokumentationskommentare werden direkt ueber ihrer Funktion bzw. ihrem Typ platziert, ausser der Kommentar gehoert wirklich an eine andere Stelle.
+- Keine Leerzeile zwischen Dokumentationskommentar und Funktionssignatur bzw. Typdefinition.
 - Je mehr eine Funktion macht, desto detaillierter sollte der Dokumentationskommentar sein. Bei einfachen Funktionen reicht eine kurze Beschreibung.
 - Imports werden am Anfang des Moduls platziert, sofern es keinen guten Grund gibt, sie woanders zu platzieren.
 - Keine Leerzeilen zwischen Imports, auch nicht, wenn es sich um verschiedene Arten von Imports handelt.

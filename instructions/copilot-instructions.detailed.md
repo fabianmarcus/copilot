@@ -96,7 +96,7 @@ Kein amend, rebase oder reset ohne explizite User-Anweisung.
 - Pro Typ eine Datei.
 - Dateiname entspricht exakt dem Typnamen.
 - TypeScript-Typen mit gleichem Praefix (z.B. PopupEntry, PopupEntryData) werden in einer Datei organisiert, deren Name exakt dem Praefix entspricht (z.B. PopupEntry.ts).
-- Ueber jedem Typ einen kurzen Doku-Kommentar mit Zweck.
+- Ueber jedem Typ einen JSDoc-Kommentar mit Zweck und Verwendung.
 
 ### Migrationsgrenze
 
@@ -110,14 +110,16 @@ Keine grossflaechige Umstrukturierung ohne fachlichen Anlass.
 - Code in Englisch.
 - Kommentare in Deutsch.
 
-### Funktionsdokumentation
+### Funktions- und Typdokumentation
 
 - Ueber jeder Funktion ein kurzer Doku-Block mit:
   - Beschreibung
   - Parameter
   - Return-Wert
-- Dokumentationskommentare werden direkt ueber ihrer Funktion platziert, ausser der Kommentar gehoert wirklich an eine andere Stelle.
-- Keine Leerzeile zwischen Dokumentationskommentar und Funktionssignatur.
+- Jede Funktion bekommt einen JSDoc-Kommentar, der Zweck und Verwendung der Funktion beschreibt.
+- Jeder TypeScript-Typ bekommt einen JSDoc-Kommentar, der Zweck und Verwendung des Typs beschreibt.
+- Dokumentationskommentare werden direkt ueber ihrer Funktion bzw. ihrem Typ platziert, ausser der Kommentar gehoert wirklich an eine andere Stelle.
+- Keine Leerzeile zwischen Dokumentationskommentar und Funktionssignatur bzw. Typdefinition.
 - Je mehr eine Funktion macht, desto detaillierter soll der Dokumentationskommentar sein. Bei einfachen Funktionen reicht eine kurze Beschreibung.
 
 ### Benennungsregeln
