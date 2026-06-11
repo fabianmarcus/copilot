@@ -68,6 +68,15 @@ Fuer CI- und Review-Agenten steht die strikte Minimalvariante in .github/copilot
   - Typen mit grossem Anfangsbuchstaben
   - Konstanten in Grossschreibung
 
+## Unit Testing
+
+- Es wird eine fuer die vorhandene Code Basis gaengige, verbreitete und moderne Testing Bibliothek verwendet.
+- Tests werden unter `/tests/` angelegt.
+- Innerhalb von `/tests/` werden sie in passende Unterordner strukturiert. Die Ordnerstruktur orientiert sich an der bestehenden Ordnerstruktur des Codes; Abweichungen sind erlaubt, wenn es fachlich sinnvoll ist oder kein passendes Aequivalent vorhanden ist.
+- Pro Modul wird eine Testdatei angelegt. Sie prueft hauptsaechlich die exportierte Funktion. Interne Modulfunktionen werden ueber Tests der exportierten Funktion mitgetestet und nicht einzeln getestet.
+- Eine Testdatei heisst wie das Modul, das sie testet, mit dem Suffix `.test.ts` oder `.spec.ts` (je nach verwendeter Bibliothek).
+- Jeder Test bekommt einen kurzen, beschreibenden JSDoc-Kommentar. Bei komplexen Tests werden zusaetzlich Inline-Kommentare gesetzt, um den Ablauf schnell erfassbar zu machen.
+
 ## Qualitaet und Stil
 
 - Clean-Code-Patterns verwenden und Anti-Patterns in TypeScript, Dateistruktur und Framework vermeiden.

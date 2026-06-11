@@ -32,6 +32,13 @@ Nur Muss-Regeln, keine Erlaeuterungen.
 - Vorschlaege kritisch pruefen und Risiken benennen.
 - Kein bestaetigender Ton ohne inhaltliche Pruefung.
 
+## Unit Testing
+
+- Tests werden unter `/tests/` angelegt, strukturiert analog zur Code-Ordnerstruktur.
+- Pro Modul eine Testdatei; Dateiname wie das Modul mit Suffix `.test.ts` oder `.spec.ts`.
+- Tests pruefen hauptsaechlich die exportierte Funktion; interne Funktionen werden indirekt mitgetestet.
+- Jeder Test bekommt einen kurzen JSDoc-Kommentar; komplexe Tests erhalten zusaetzlich Inline-Kommentare.
+
 ## Review-Fokus
 
 - Prioritaet auf Bugs, Risiken, Regressionen und fehlende Tests.

@@ -178,7 +178,33 @@ Wenn etwas nicht umgesetzt werden kann, Grund und Alternative klar nennen.
 - "Wird aktuell nach updatedAt sortiert?"
 - "Welche Optionen haetten wir hier?"
 
-## 9. Empfohlene Pflege
+## 9. Unit Testing
+
+### Bibliothek
+
+Eine fuer die vorhandene Code Basis gaengige, verbreitete und moderne Testing Bibliothek verwenden.
+Keine neue Bibliothek einfuehren, wenn bereits eine im Projekt etabliert ist.
+
+### Ablageort und Struktur
+
+- Tests werden unter `/tests/` angelegt.
+- Innerhalb von `/tests/` werden sie in passende Unterordner strukturiert.
+- Die Ordnerstruktur orientiert sich an der bestehenden Ordnerstruktur des Codes.
+- Abweichungen sind erlaubt, wenn es fachlich sinnvoll ist oder kein passendes Aequivalent in der Code-Struktur vorhanden ist.
+
+### Testdateien
+
+- Pro Modul wird eine Testdatei angelegt.
+- Der Dateiname entspricht dem Modulnamen mit dem Suffix `.test.ts` oder `.spec.ts`, je nachdem, was fuer die verwendete Bibliothek besser passt.
+- Eine Testdatei prueft hauptsaechlich die exportierte Funktion des Moduls.
+- Interne Modulfunktionen werden ueber Tests der exportierten Funktion mitgetestet; sie muessen nicht einzeln getestet werden.
+
+### Kommentare in Tests
+
+- Jeder Test bekommt einen kurzen, beschreibenden JSDoc-Kommentar.
+- Bei komplexen Tests werden zusaetzlich Inline-Kommentare gesetzt, um den Ablauf schnell erfassbar zu machen.
+
+## 10. Empfohlene Pflege
 
 - Kurze Team-Version stabil halten und nur bei Regelentscheidungen aendern.
 - Detaildatei fuer Klarstellungen und Beispiele nutzen.
