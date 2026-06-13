@@ -4,6 +4,10 @@ Das ist meine persönliche zentrale Sammlung von GitHub Copilot Instructions und
 
 Sie enthält sowohl selbst erstellte Anleitungen als auch ausgewählte Inhalte aus der Community, insbesondere von [Awesome Copilot](https://github.com/github/awesome-copilot/).
 
+Mit diesen Instructions lässt sich - meiner Meinung nach - sehr lesbarer Code generieren. Aufgrund des "Single Responsibility Principle" pro Modul wird jede Code Einheit zudem so übersichtlich gehalten, dass sie gut überflogen und bei Bedarf schnell im Detail reviewed werden kann.
+
+Der Planungsskill `feature-planning` schneidet einen Plan in separate Planungseinheiten, die für sich funktionieren und eingecheckt werden können. Da die Einheiten per Vorgabe übersichtlich bleiben sollen, wird nur so viel neue Funktionalität generiert, wie notwendig. Dadurch ändern sich nur wenige Dateien. Jeder Step bleibt gut nachvollziehbar und kann leicht reviewt werden.
+
 ## Verwendung als Git-Submodul
 
 Dieses Repository dient als zentrale Quelle für wiederverwendbare Copilot-Inhalte. Es wird von anderen Projekten typischerweise als Git-Submodul unter `.github/copilot-shared` eingebunden.
