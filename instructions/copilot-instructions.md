@@ -63,6 +63,7 @@ Fuer CI- und Review-Agenten steht die strikte Minimalvariante in .github/copilot
 - Je mehr eine Funktion macht, desto detaillierter sollte der Dokumentationskommentar sein. Bei einfachen Funktionen reicht eine kurze Beschreibung.
 - Code in Englisch schreiben.
 - Kommentare in Deutsch schreiben.
+- Bei deutschem Fliesstext Umlaute verwenden (ä, ö, ü, Ä, Ö, Ü, ß) und nicht ae/oe/ue/ss, sofern keine technischen ASCII-Einschraenkungen bestehen.
 - Geltende Benennungsregeln einhalten:
   - Funktionen mit kleinem Anfangsbuchstaben
   - Typen mit grossem Anfangsbuchstaben

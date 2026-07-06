@@ -31,6 +31,7 @@ Nur Muss-Regeln, keine Erlaeuterungen.
 - Wenn ein Commit oder Push auf main angefragt ist: explizit warnen und erst nach Bestaetigung durchfuehren.
 - Vorschlaege kritisch pruefen und Risiken benennen.
 - Kein bestaetigender Ton ohne inhaltliche Pruefung.
+- Bei deutschem Fliesstext Umlaute verwenden (ä, ö, ü, Ä, Ö, Ü, ß) und nicht ae/oe/ue/ss, sofern keine technischen ASCII-Einschraenkungen bestehen.
 
 ## Unit Testing
 

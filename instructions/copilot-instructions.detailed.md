@@ -109,6 +109,7 @@ Keine grossflaechige Umstrukturierung ohne fachlichen Anlass.
 
 - Code in Englisch.
 - Kommentare in Deutsch.
+- Bei deutschem Fliesstext Umlaute verwenden (ä, ö, ü, Ä, Ö, Ü, ß) und nicht ae/oe/ue/ss, sofern keine technischen ASCII-Einschraenkungen bestehen.
 
 ### Funktions- und Typdokumentation
 
