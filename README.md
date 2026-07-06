@@ -41,6 +41,10 @@ cp .github/copilot-shared/copilot-instructions.md .github/copilot-instructions.m
 
 Alternativ kann die Struktur unter macOS- oder Linux-Systemen auch per Symlink gespiegelt werden. Eine passende Copilot-Anweisung dafuer waere zum Beispiel:
 
+```bash
+./scripts/create-copilot-shared-symlinks.sh
+```
+
 ```text
 - Lege jeweils einen Symlink auf jede Instructions Datei im Ordner `.github/copilot-shared/instructions` entsprechend unter `.github/` an.
 - Lege einen Symlink auf den Skills Ordner `.github/copilot-shared/skills/` entsprechend unter `.github/` an.
