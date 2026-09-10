@@ -69,17 +69,17 @@ functions/
   src/
     index.ts
     contactSubmit/
-      v1_contactSubmit/
-        v1_contactSubmit.ts
+      v1/
+        contactSubmit.ts
         ContactSubmitRequest.ts
         validateContactSubmitRequest.ts
-      v2_contactSubmit/
-        v2_contactSubmit.ts
+      v2/
+        contactSubmit.ts
         ContactSubmitRequest.ts
         validateContactSubmitRequest.ts
     newsletterSubscribe/
-      v1_newsletterSubscribe/
-        v1_newsletterSubscribe.ts
+      v1/
+        newsletterSubscribe.ts
         NewsletterSubscribeRequest.ts
         normalizeNewsletterEmail.ts
     shared/
@@ -89,7 +89,7 @@ functions/
       validation/
 ```
 
-Jede Function-Familie liegt in einem unversionierten Oberordner, z. B. `contactSubmit/`. Jede deploybare Server Function liegt darunter in einem eigenen Versionsordner, der exakt wie der Function-Export heißt. Neue Server Functions starten mit Version 1, also mit dem Präfix `v1_`. Wenn sich nur eine Function ändert, wird nur für diese Function ein neuer Versionsordner mit neuem Export angelegt, z. B. `contactSubmit/v2_contactSubmit/`. Unveränderte Function-Familien wie `newsletterSubscribe/` bleiben unangetastet und benötigen kein künstliches Versions-Update.
+Jede Function-Familie liegt in einem unversionierten Oberordner, z. B. `contactSubmit/`. Jede deploybare Server Function liegt darunter in einem eigenen Versionsordner, der nur die Version enthält, z. B. `v1/` oder `v2/`. Neue Server Functions starten mit Version 1, also mit dem Präfix `v1_` im Function-Export und dem Ordner `v1/`. Wenn sich nur eine Function ändert, wird nur für diese Function ein neuer Versionsordner mit neuem Export angelegt, z. B. `contactSubmit/v2/`. Die Function-Datei selbst wird fachlich benannt, z. B. `contactSubmit.ts`; die Version ist bereits über den Ordner ersichtlich. Unveränderte Function-Familien wie `newsletterSubscribe/` bleiben unangetastet und benötigen kein künstliches Versions-Update.
 
 Der Versionsordner einer Server Function darf Typdefinitionen, Validierung, Mapper oder lokale Hilfsfunktionen enthalten. Der zentrale Export dieses Ordners bleibt aber genau eine deploybare Server Function. Gemeinsam genutzte Bausteine liegen unter `shared/`, müssen aber rückwärtskompatibel bleiben, weil Änderungen daran mehrere Function-Versionen beeinflussen können.
 
@@ -98,9 +98,9 @@ Der Versionsordner einer Server Function darf Typdefinitionen, Validierung, Mapp
 `functions/src/index.ts` exportiert nur stabile, deploybare Function-Namen:
 
 ```ts
-export { v1_contactSubmit } from "./contactSubmit/v1_contactSubmit/v1_contactSubmit";
-export { v1_newsletterSubscribe } from "./newsletterSubscribe/v1_newsletterSubscribe/v1_newsletterSubscribe";
-export { v2_contactSubmit } from "./contactSubmit/v2_contactSubmit/v2_contactSubmit";
+export { v1_contactSubmit } from "./contactSubmit/v1/contactSubmit";
+export { v1_newsletterSubscribe } from "./newsletterSubscribe/v1/newsletterSubscribe";
+export { v2_contactSubmit } from "./contactSubmit/v2/contactSubmit";
 ```
 
 Die Exporte bilden den deploybaren Vertrag. Es gibt keine globalen Versionsordner, weil eine neue Version immer nur die einzelne geänderte Server Function betrifft.
@@ -113,11 +113,11 @@ Ausgangszustand:
 functions/src/
   index.ts
   contactSubmit/
-    v1_contactSubmit/
-      v1_contactSubmit.ts
+    v1/
+      contactSubmit.ts
   newsletterSubscribe/
-    v1_newsletterSubscribe/
-      v1_newsletterSubscribe.ts
+    v1/
+      newsletterSubscribe.ts
   shared/
 ```
 
@@ -127,22 +127,22 @@ Wenn sich nur `v1_contactSubmit` ändert, entsteht zusätzlich `v2_contactSubmit
 functions/src/
   index.ts
   contactSubmit/
-    v1_contactSubmit/
-      v1_contactSubmit.ts
-    v2_contactSubmit/
-      v2_contactSubmit.ts
+    v1/
+      contactSubmit.ts
+    v2/
+      contactSubmit.ts
   newsletterSubscribe/
-    v1_newsletterSubscribe/
-      v1_newsletterSubscribe.ts
+    v1/
+      newsletterSubscribe.ts
   shared/
 ```
 
 `functions/src/index.ts` exportiert danach beide Kontakt-Versionen und weiterhin die unveränderte Newsletter-Version:
 
 ```ts
-export { v1_contactSubmit } from "./contactSubmit/v1_contactSubmit/v1_contactSubmit";
-export { v2_contactSubmit } from "./contactSubmit/v2_contactSubmit/v2_contactSubmit";
-export { v1_newsletterSubscribe } from "./newsletterSubscribe/v1_newsletterSubscribe/v1_newsletterSubscribe";
+export { v1_contactSubmit } from "./contactSubmit/v1/contactSubmit";
+export { v2_contactSubmit } from "./contactSubmit/v2/contactSubmit";
+export { v1_newsletterSubscribe } from "./newsletterSubscribe/v1/newsletterSubscribe";
 ```
 
 ## Vorgehen
@@ -163,8 +163,8 @@ export { v1_newsletterSubscribe } from "./newsletterSubscribe/v1_newsletterSubsc
 
 - Neue Functions immer als `v1_`-Function anlegen.
 - Jede Function-Familie unter `src/<functionFamily>/` ablegen, z. B. `src/contactSubmit/`.
-- Jede deploybare Server Function unter `src/<functionFamily>/<functionName>/` ablegen, z. B. `src/contactSubmit/v1_contactSubmit/`.
-- Bei Änderungen am deploybaren Function-Code nur für die betroffene Function eine neue Version anlegen, z. B. `src/contactSubmit/v2_contactSubmit/`.
+- Jede deploybare Server Function unter `src/<functionFamily>/v<major>/` ablegen, z. B. `src/contactSubmit/v1/`.
+- Bei Änderungen am deploybaren Function-Code nur für die betroffene Function eine neue Version anlegen, z. B. `src/contactSubmit/v2/`.
 - Schema/Validierung und Fachlogik aus dem Trigger herausziehen, wenn der Code sonst zu breit wird.
 
 4. **Kompatibilität absichern**
@@ -192,8 +192,8 @@ export { v1_newsletterSubscribe } from "./newsletterSubscribe/v1_newsletterSubsc
 
 - Function-Export: `v<major>_<domain><Action>`.
 - Function-Familienordner: unversionierter fachlicher Name, z. B. `contactSubmit/`.
-- Versionsordner der Server Function: exakt wie der Exportname, z. B. `v1_contactSubmit/`.
-- Datei der Function: exakt wie der Exportname, z. B. `v1_contactSubmit.ts`.
+- Versionsordner der Server Function: nur die Version, z. B. `v1/`.
+- Datei der Function: fachlicher Name ohne Versionspräfix, z. B. `contactSubmit.ts`.
 - Schema-Datei: `<functionName>.schema.ts`.
 - Service-Datei: `<functionName>.service.ts`.
 - Interne Hilfsfunktionen enthalten keine Versionsnummer, wenn sie nicht Teil des deploybaren Vertrags sind.
@@ -202,7 +202,8 @@ export { v1_newsletterSubscribe } from "./newsletterSubscribe/v1_newsletterSubsc
 
 - Ist der exportierte Function-Name versioniert?
 - Liegt die Server Function unter einem unversionierten Function-Familienordner?
-- Heißt der Versionsordner exakt wie der Function-Export?
+- Heißt der Versionsordner nur nach der Version, z. B. `v1/` oder `v2/`?
+- Ist die Function-Datei fachlich ohne Versionspräfix benannt?
 - Bleiben alte Function-Versionen deploybar?
 - Bleiben unveränderte Functions ohne unnötiges Versions-Update erhalten?
 - Ist klar, ob die Änderung breaking oder non-breaking ist?
