@@ -42,7 +42,7 @@ cp .github/copilot-shared/copilot-instructions.md .github/copilot-instructions.m
 Alternativ kann die Struktur unter macOS- oder Linux-Systemen auch per Symlink gespiegelt werden. Eine passende Copilot-Anweisung dafuer waere zum Beispiel:
 
 ```bash
-./scripts/create-copilot-shared-symlinks.sh
+.github/copilot-shared/scripts/create-copilot-shared-symlinks.sh
 ```
 
 ```text
